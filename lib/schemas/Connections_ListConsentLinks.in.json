@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "connectionName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request for a list of consent links",
+            "properties": {
+                "parameters": {
+                    "description": "Collection of resources",
+                    "items": {
+                        "description": "Consent link definition",
+                        "properties": {
+                            "objectId": {
+                                "description": "AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount",
+                                "type": "string"
+                            },
+                            "parameterName": {
+                                "description": "Name of the parameter in the connection provider's OAuth settings",
+                                "type": "string"
+                            },
+                            "redirectUrl": {
+                                "description": "Name of the parameter in the connection provider's OAuth settings",
+                                "type": "string"
+                            },
+                            "tenantId": {
+                                "description": "The tenant id",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

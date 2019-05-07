@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "connectionName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Confirm consent code request",
+            "properties": {
+                "code": {
+                    "description": "Code that was returned during consent flow",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "AAD object ID. This is userId",
+                    "type": "string"
+                },
+                "tenantId": {
+                    "description": "Tenant Id",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,284 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "apiName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "additionalProperties": false,
+                    "description": "A resource",
+                    "properties": {
+                        "etag": {
+                            "description": "Resource ETag",
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "Resource id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "example": {
+                                "SampleTagName": "SampleTagValue"
+                            },
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "A custom API",
+            "properties": {
+                "properties": {
+                    "additionalProperties": false,
+                    "description": "Custom API properties",
+                    "properties": {
+                        "apiDefinitions": {
+                            "additionalProperties": false,
+                            "description": "API Definitions",
+                            "properties": {
+                                "modifiedSwaggerUrl": {
+                                    "description": "The modified swagger URL",
+                                    "type": "string"
+                                },
+                                "originalSwaggerUrl": {
+                                    "description": "The original swagger URL",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "apiType": {
+                            "description": "The API type",
+                            "enum": [
+                                "NotSpecified",
+                                "Rest",
+                                "Soap"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ApiType"
+                            }
+                        },
+                        "backendService": {
+                            "additionalProperties": false,
+                            "description": "The API backend service",
+                            "properties": {
+                                "serviceUrl": {
+                                    "description": "The service URL",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "brandColor": {
+                            "description": "Brand color",
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "description": "The custom API capabilities",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "connectionParameters": {
+                            "additionalProperties": {
+                                "description": "Connection provider parameters",
+                                "properties": {
+                                    "oAuthSettings": {
+                                        "description": "OAuth settings for the connection provider",
+                                        "properties": {
+                                            "clientId": {
+                                                "description": "Resource provider client id",
+                                                "type": "string"
+                                            },
+                                            "clientSecret": {
+                                                "description": "Client Secret needed for OAuth",
+                                                "type": "string"
+                                            },
+                                            "customParameters": {
+                                                "additionalProperties": {
+                                                    "description": "OAuth settings for the API",
+                                                    "properties": {
+                                                        "options": {
+                                                            "description": "Options available to this parameter",
+                                                            "type": "object"
+                                                        },
+                                                        "uiDefinition": {
+                                                            "description": "UI definitions per culture as caller can specify the culture",
+                                                            "type": "object"
+                                                        },
+                                                        "value": {
+                                                            "description": "Value of the setting",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "description": "OAuth parameters key is the name of parameter",
+                                                "type": "object"
+                                            },
+                                            "identityProvider": {
+                                                "description": "Identity provider",
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "description": "Read only properties for this oauth setting.",
+                                                "type": "object"
+                                            },
+                                            "redirectUrl": {
+                                                "description": "Url",
+                                                "type": "string"
+                                            },
+                                            "scopes": {
+                                                "description": "OAuth scopes",
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": {
+                                        "description": "Type of the parameter",
+                                        "enum": [
+                                            "string",
+                                            "securestring",
+                                            "secureobject",
+                                            "int",
+                                            "bool",
+                                            "object",
+                                            "array",
+                                            "oauthSetting",
+                                            "connection"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": false,
+                                            "name": "ConnectionParameterType"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "description": "Connection parameters",
+                            "type": "object"
+                        },
+                        "description": {
+                            "description": "The custom API description",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The display name",
+                            "type": "string"
+                        },
+                        "iconUri": {
+                            "description": "The icon URI",
+                            "type": "string"
+                        },
+                        "runtimeUrls": {
+                            "description": "Runtime URLs",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "swagger": {
+                            "description": "The JSON representation of the swagger",
+                            "type": "object"
+                        },
+                        "wsdlDefinition": {
+                            "additionalProperties": false,
+                            "description": "The WSDL definition",
+                            "properties": {
+                                "content": {
+                                    "description": "The WSDL content",
+                                    "type": "string"
+                                },
+                                "importMethod": {
+                                    "description": "The WSDL import method",
+                                    "enum": [
+                                        "NotSpecified",
+                                        "SoapToRest",
+                                        "SoapPassThrough"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "WsdlImportMethod"
+                                    }
+                                },
+                                "service": {
+                                    "additionalProperties": false,
+                                    "description": "The service with name and endpoint names",
+                                    "properties": {
+                                        "endpointQualifiedNames": {
+                                            "description": "List of the endpoints' qualified names",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "qualifiedName": {
+                                            "description": "The service's qualified name",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "qualifiedName"
+                                    ],
+                                    "type": "object"
+                                },
+                                "url": {
+                                    "description": "The WSDL URL",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

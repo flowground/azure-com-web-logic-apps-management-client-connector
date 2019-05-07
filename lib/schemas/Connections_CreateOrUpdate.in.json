@@ -1,0 +1,257 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "connectionName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "additionalProperties": false,
+                    "description": "A resource",
+                    "properties": {
+                        "etag": {
+                            "description": "Resource ETag",
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "Resource id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "example": {
+                                "SampleTagName": "SampleTagValue"
+                            },
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "API connection",
+            "properties": {
+                "properties": {
+                    "properties": {
+                        "api": {
+                            "additionalProperties": false,
+                            "allOf": [
+                                {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "id": {
+                                            "description": "Resource reference id",
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "description": "Resource reference type",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "x-abstract": true
+                                }
+                            ],
+                            "properties": {
+                                "brandColor": {
+                                    "description": "Brand color",
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "description": "The custom API description",
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "description": "The display name",
+                                    "type": "string"
+                                },
+                                "iconUri": {
+                                    "description": "The icon URI",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the API",
+                                    "type": "string"
+                                },
+                                "swagger": {
+                                    "description": "The JSON representation of the swagger",
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object",
+                            "x-abstract": true
+                        },
+                        "changedTime": {
+                            "description": "Timestamp of last connection change",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "createdTime": {
+                            "description": "Timestamp of the connection creation",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "customParameterValues": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Dictionary of custom parameter values",
+                            "type": "object"
+                        },
+                        "displayName": {
+                            "description": "Display name",
+                            "type": "string"
+                        },
+                        "nonSecretParameterValues": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Dictionary of nonsecret parameter values",
+                            "type": "object"
+                        },
+                        "parameterValues": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Dictionary of parameter values",
+                            "type": "object"
+                        },
+                        "statuses": {
+                            "description": "Status of the connection",
+                            "items": {
+                                "description": "Connection status",
+                                "properties": {
+                                    "error": {
+                                        "allOf": [
+                                            {
+                                                "additionalProperties": false,
+                                                "description": "A resource",
+                                                "properties": {
+                                                    "etag": {
+                                                        "description": "Resource ETag",
+                                                        "type": "string"
+                                                    },
+                                                    "id": {
+                                                        "description": "Resource id",
+                                                        "readOnly": true,
+                                                        "type": "string"
+                                                    },
+                                                    "location": {
+                                                        "description": "Resource location",
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "description": "Resource name",
+                                                        "readOnly": true,
+                                                        "type": "string"
+                                                    },
+                                                    "tags": {
+                                                        "additionalProperties": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": "Resource tags",
+                                                        "example": {
+                                                            "SampleTagName": "SampleTagValue"
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": {
+                                                        "description": "Resource type",
+                                                        "readOnly": true,
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "x-ms-azure-resource": true
+                                            }
+                                        ],
+                                        "description": "Connection error",
+                                        "properties": {
+                                            "properties": {
+                                                "properties": {
+                                                    "code": {
+                                                        "description": "Code of the status",
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "description": "Description of the status",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "x-ms-client-flatten": true
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "status": {
+                                        "description": "The gateway status",
+                                        "type": "string"
+                                    },
+                                    "target": {
+                                        "description": "Target of the error",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "testLinks": {
+                            "description": "Links to test the API connection",
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "API connection properties",
+                                "properties": {
+                                    "method": {
+                                        "description": "HTTP Method",
+                                        "type": "string"
+                                    },
+                                    "requestUri": {
+                                        "description": "Test link request URI",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

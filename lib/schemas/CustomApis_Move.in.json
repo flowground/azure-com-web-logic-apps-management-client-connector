@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "apiName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "additionalProperties": false,
+                    "allOf": [
+                        {
+                            "additionalProperties": false,
+                            "properties": {
+                                "id": {
+                                    "description": "Resource reference id",
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Resource reference type",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-abstract": true
+                        }
+                    ],
+                    "properties": {
+                        "brandColor": {
+                            "description": "Brand color",
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "The custom API description",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The display name",
+                            "type": "string"
+                        },
+                        "iconUri": {
+                            "description": "The icon URI",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the API",
+                            "type": "string"
+                        },
+                        "swagger": {
+                            "description": "The JSON representation of the swagger",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object",
+                    "x-abstract": true
+                }
+            ],
+            "description": "The custom API reference",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

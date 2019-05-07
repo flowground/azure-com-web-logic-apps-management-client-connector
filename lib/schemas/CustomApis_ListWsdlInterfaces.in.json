@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "additionalProperties": false,
+            "description": "The WSDL definition",
+            "properties": {
+                "content": {
+                    "description": "The WSDL content",
+                    "type": "string"
+                },
+                "importMethod": {
+                    "description": "The WSDL import method",
+                    "enum": [
+                        "NotSpecified",
+                        "SoapToRest",
+                        "SoapPassThrough"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "WsdlImportMethod"
+                    }
+                },
+                "service": {
+                    "additionalProperties": false,
+                    "description": "The service with name and endpoint names",
+                    "properties": {
+                        "endpointQualifiedNames": {
+                            "description": "List of the endpoints' qualified names",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "qualifiedName": {
+                            "description": "The service's qualified name",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "qualifiedName"
+                    ],
+                    "type": "object"
+                },
+                "url": {
+                    "description": "The WSDL URL",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

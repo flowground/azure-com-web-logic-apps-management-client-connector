@@ -1,0 +1,491 @@
+{
+    "title": "LogicAppsManagementClient",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/web-logicAppsManagementClient/2016-06-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ConnectionGateways_List": {
+            "main": "./lib/actions/ConnectionGateways_List.js",
+            "title": "Lists all of the connection gateways",
+            "description": "Gets a list of gateways under a subscription",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGateways_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_List": {
+            "main": "./lib/actions/CustomApis_List.js",
+            "title": "List of custom APIs",
+            "description": "Gets a list of all custom APIs for a subscription id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGatewayInstallations_List": {
+            "main": "./lib/actions/ConnectionGatewayInstallations_List.js",
+            "title": "Gets a list of installed gateways that the user is an admin of",
+            "description": "Gets a list of installed gateways that the user is an admin of, in a specific subscription and at a certain location",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGatewayInstallations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGatewayInstallations_Get": {
+            "main": "./lib/actions/ConnectionGatewayInstallations_Get.js",
+            "title": "Gets an installed gateway that the user is an admin of",
+            "description": "Get a specific installed gateway that the user is an admin of, in a specific subscription and at a certain location",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGatewayInstallations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_ExtractApiDefinitionFromWsdl": {
+            "main": "./lib/actions/CustomApis_ExtractApiDefinitionFromWsdl.js",
+            "title": "Returns API definition from WSDL",
+            "description": "Parses the specified WSDL and extracts the API definition",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_ExtractApiDefinitionFromWsdl.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_ListWsdlInterfaces": {
+            "main": "./lib/actions/CustomApis_ListWsdlInterfaces.js",
+            "title": "Lists WSDL interfaces",
+            "description": "This returns the list of interfaces in the WSDL",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_ListWsdlInterfaces.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagedApis_List": {
+            "main": "./lib/actions/ManagedApis_List.js",
+            "title": "Lists managed APIs",
+            "description": "Gets a list of managed APIs",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagedApis_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagedApis_Get": {
+            "main": "./lib/actions/ManagedApis_Get.js",
+            "title": "Gets managed API",
+            "description": "Gets a managed API",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagedApis_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGateways_ListByResourceGroup": {
+            "main": "./lib/actions/ConnectionGateways_ListByResourceGroup.js",
+            "title": "Lists all of the connection gateways",
+            "description": "Gets a list of gateways under a subscription and in a specific resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGateways_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGateways_Delete": {
+            "main": "./lib/actions/ConnectionGateways_Delete.js",
+            "title": "Deletes a specific gateway",
+            "description": "Deletes a specific gateway for under a subscription and in a specific resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGateways_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGateways_Get": {
+            "main": "./lib/actions/ConnectionGateways_Get.js",
+            "title": "Gets a specific gateway",
+            "description": "Gets a specific gateway under a subscription and in a specific resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGateways_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGateways_Update": {
+            "main": "./lib/actions/ConnectionGateways_Update.js",
+            "title": "Updates a specific gateway",
+            "description": "Updates a connection gateway's tags",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGateways_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionGateways_CreateOrUpdate": {
+            "main": "./lib/actions/ConnectionGateways_CreateOrUpdate.js",
+            "title": "Replaces a specific gateway",
+            "description": "Creates or updates a specific gateway for under a subscription and in a specific resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionGateways_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_List": {
+            "main": "./lib/actions/Connections_List.js",
+            "title": "Get all connections",
+            "description": "Gets a list of connections",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_Delete": {
+            "main": "./lib/actions/Connections_Delete.js",
+            "title": "Delete an existing connection",
+            "description": "Deletes a connection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_Get": {
+            "main": "./lib/actions/Connections_Get.js",
+            "title": "Get a connection",
+            "description": "Get a specific connection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_Update": {
+            "main": "./lib/actions/Connections_Update.js",
+            "title": "Update an existing connection",
+            "description": "Updates a connection's tags",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_CreateOrUpdate": {
+            "main": "./lib/actions/Connections_CreateOrUpdate.js",
+            "title": "Replace an existing connection",
+            "description": "Creates or updates a connection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_ConfirmConsentCode": {
+            "main": "./lib/actions/Connections_ConfirmConsentCode.js",
+            "title": "Confirms the consent code for a connection",
+            "description": "Confirms consent code of a connection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_ConfirmConsentCode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connections_ListConsentLinks": {
+            "main": "./lib/actions/Connections_ListConsentLinks.js",
+            "title": "Lists consent links for a connection",
+            "description": "Lists the consent links of a connection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connections_ListConsentLinks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_ListByResourceGroup": {
+            "main": "./lib/actions/CustomApis_ListByResourceGroup.js",
+            "title": "List of custom APIs",
+            "description": "Gets a list of all custom APIs in a subscription for a specific resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_Delete": {
+            "main": "./lib/actions/CustomApis_Delete.js",
+            "title": "Delete a custom API",
+            "description": "Deletes a custom API from the resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_Get": {
+            "main": "./lib/actions/CustomApis_Get.js",
+            "title": "Get a custom API",
+            "description": "Gets a custom API by name for a specific subscription and resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_Update": {
+            "main": "./lib/actions/CustomApis_Update.js",
+            "title": "Update an existing custom API",
+            "description": "Updates an existing custom API's tags",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_CreateOrUpdate": {
+            "main": "./lib/actions/CustomApis_CreateOrUpdate.js",
+            "title": "Replaces an existing custom API",
+            "description": "Creates or updates an existing custom API",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomApis_Move": {
+            "main": "./lib/actions/CustomApis_Move.js",
+            "title": "Moves the custom API",
+            "description": "Moves a specific custom API",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomApis_Move.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
